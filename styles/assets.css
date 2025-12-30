@@ -1,0 +1,20 @@
+img.logo {
+    width: 120px;
+    height: auto;
+}
+
+.title {
+    text-align: center;
+    color: aliceblue;
+    margin-top: 10px;
+    font-size: 24px;
+}
+
+searchInput {
+    width: 80%;
+    padding: 10px;
+    margin: 20px auto;
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
