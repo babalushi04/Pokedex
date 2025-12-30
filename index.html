@@ -22,8 +22,19 @@
         <input type="text" id="searchInput" placeholder="Search Pokemon..." oninput="filterPokemon()">
     </header>
     <main>
-
+        <div id="pokemonContainer" class="pokemon-container">
+            <!-- Pokemon cards will be dynamically inserted here -->
+        </div>
+        <dialog id="dialogCard">
+            <div id="dialogContent">
+                <!-- Dialog content will be dynamically inserted here -->
+            </div>
+            <button id="closeDialogButton" onclick="closeDialog()">Close</button>
+        </dialog>
     </main>
+
+        <button type="button" id="prevPokemon" onclick="showPreviousPokemon()" style="display:none;">Previous</button>
+        <button type="button" id="nextPokemon" onclick="showNextPokemon()" style="display:none;">Next</button>
 
     <footer>
         <p>© 2025 Pokedex App. All rights reserved.</p>
@@ -34,6 +45,7 @@
 <script src="script.js" defer></script>
 <script src="./scripts/template.js" defer></script>
 <script src="./scripts/db.js" defer></script>
+<script src="./scripts/load.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
