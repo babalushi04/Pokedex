@@ -7,8 +7,8 @@ let pokedexCard = [];
 let allPokemons = [];
 
 let inputValue = document.getElementById("searchInput");
-let dialogCard = document.getElementById("dialogCard");
-
+let dialogCard = document.getElementById("dialog-content");
+    
 async function init() {
     await pokemonCard();
 }
@@ -49,7 +49,7 @@ async function pokemonCard() {
         if (pokemon.types.length > 1) {
             let typeName2 = pokemon.types[1].type.name.charAt(0).toUpperCase() + pokemon.types[1].type.name.slice(1);
         }
-        document.getElementById("pocemons").innerHTML += getPokemonCard(pokemon, i, button2);
+        document.getElementById("pokemons").innerHTML += getPokemonCard(pokemon, i, button2);
     }
 }
 
@@ -95,21 +95,34 @@ async function evoCardPokemon(i) {
 }
 
 async function inputSearchPokemon() {
-    // FEHLER 7: Typo in Variable (allPokemmons -> allPokemons)
-    for (let i = 0; i < allPokemons.length; i++) {
-        let pokemon = allPokemons[i];
-        let button2 = `<button id="btn-icon-button" class="type-btn"><img id="cardImgHeder" class="type-img" src="./image/icons/${pokemon.types.length == 1 ? "" : pokemon.types[1].type.name
-            }.png" alt="${pokemon.name}"></button>`;
-        let search = inputValue.value.trim().toLowerCase();
+    const search = inputValue.value.trim().toLowerCase();
+    if (search === "") {
+        renderAllPokemons();
+        return;
+    }
 
-        if (search == "") {
-            document.getElementById("pocemons").innerHTML = getNotPokemon(pokemon, i);
-        }
+    const filtered = allPokemons.filter(p => 
+        p.name.toLowerCase().includes(search) || p.id.toString().includes(search)
+    );
+    
+    renderPokemons(filtered);
+}
 
-        // FEHLER 8: Vergleich sollte auch lowercase sein
-        if (search == pokemon.id.toString() || search == pokemon.name.toLowerCase()) {
-            document.getElementById("pocemons").innerHTML = getPokemonCard(pokemon, i, button2);
-        }
+function renderPokemons(pokemons) {
+    document.getElementById("pokemons").innerHTML = "";
+    
+    if (pokemons.length > 0) {
+        pokemons.forEach((pokemon) => {
+            const originalIndex = allPokemons.indexOf(pokemon);
+            const button2 = `<button id="btn-icon-button" class="type-btn"><img id="cardImgHeder" class="type-img" src="./assets/pics/${pokemon.types.length === 1 ? "" : pokemon.types[1].type.name}.png" alt="${pokemon.name}"></button>`;
+            document.getElementById("pokemons").innerHTML += getPokemonCard(pokemon, originalIndex, button2);
+        });
+    } else {
+        document.getElementById("pokemons").innerHTML = getNotPokemon();
+        setTimeout(() => {
+            renderAllPokemons();
+            inputValue.value = "";
+        }, 2000);
     }
 }
 
@@ -117,20 +130,18 @@ async function showLeft(i) {
     let currentIndex = (i - 1 + allPokemons.length) % allPokemons.length;
     let pokemon = allPokemons[currentIndex];
     document.querySelector("#card").innerHTML = getPokemonCardDialog(pokemon, currentIndex);
-    // FEHLER 9: Index sollte currentIndex sein
     await aboutCardPokemon(currentIndex);
 }
 
-async function showlRight(i) {
+async function showRight(i) {
     let currentIndex = (i + 1) % allPokemons.length;
     let pokemon = allPokemons[currentIndex];
     document.querySelector("#card").innerHTML = getPokemonCardDialog(pokemon, currentIndex);
-    // FEHLER 10: Index sollte currentIndex sein
     await aboutCardPokemon(currentIndex);
 }
 
-async function morePocemon() {
-    document.getElementById("pocemons").innerHTML = "";
+async function morePokemon() {
+    document.getElementById("pokemons").innerHTML = "";
     offset += 20;
     BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
     await pokemonCard();
