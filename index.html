@@ -16,27 +16,28 @@
 </head>
 
 <body onload="init()">
-    <header class="header-container">
-        <img src="./assets/pics/logo-pokemon-ball.png" alt="Pokedex Logo" class="logo">
-        <h1 class="title">Pokedex</h1>
-        <input type="text" id="searchInput" placeholder="Search Pokemon..." oninput="inputSearchPokemon()">
-    </header>
-    
-    <main id="content" class="container">
-        <div id="loader-overlay" class="loader-overlay" aria-busy="false" role="status" aria-live="polite" hidden>
-            <div id="loader" class="spinner-border" role="status" aria-hidden="false">
-                <span class="visually-hidden">Loading...</span>
+        <header>
+            <div class="header-logo-container">
+                <img src="./image/logo-pokemon-ball.png" alt="pokemon-ball.png">
             </div>
-        </div>
-        <div id="pokemons" class="container-xxl"></div>
-        <dialog class="dialog" id="dialog-content">
-            <section id="card" class="card-section"></section>
-        </dialog>
-        <div class="mor-btn-container">
-            <button class="primary-btn" onclick="morePokemon()">Load More</button>
-        </div>
-    </main>
-    
+            <h1>Pokedex</h1>
+            <div class="search-container">
+                    <input type="search" onchange="inputSearchPokemon()" placeholder="Name oder Id" id="search" class="search-input" name="search" aria-label="Search site content" />
+        </header>
+        <main id="content" class="container">
+            <div id="loader-overlay" class="loader-overlay" aria-busy="false" role="status" aria-live="polite" hidden>
+                <div id="loader" class="spinner-border" role="status" aria-hidden="false">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            <div id="pokemons" class="container-xxl"></div>
+            <dialog class="dialog" closedby="any" id="dialog-content">
+                <section id="card" class="card-section"></section>
+            </dialog>
+            <div class="mor-btn-container">
+                <button class="primary-btn" onclick="morePokemon(offset)">Mehr Anzeigen</button>
+            </div>
+        </main>
     <footer>
         <p>© 2025 Pokedex App. All rights reserved.</p>
     </footer>

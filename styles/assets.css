@@ -10,7 +10,7 @@ img.logo {
     font-size: 24px;
 }
 
-searchInput {
+.searchInput {
     width: 80%;
     padding: 10px;
     margin: 20px auto;
