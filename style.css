@@ -12,6 +12,15 @@ body:has(.dialog[open]) {
   overflow: hidden;
 }
 
+dialog.dialog[open] {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  z-index: 3000;
+}
+
 h1 {
   color: var(--primary-color-h1) !important;
 }
