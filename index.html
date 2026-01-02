@@ -22,8 +22,9 @@
             </div>
             <h1>Pokedex</h1>
             <div class="search-container">
-                    <input type="search" onchange="inputSearchPokemon()" placeholder="Search the Pokemon...." id="search" class="search-input" name="search" aria-label="Search site content" />
-        </header>
+                    <input type="search" oninput="inputSearchPokemon()" placeholder="Search the Pokemon...." id="search" class="search-input" name="search" aria-label="Search site content" />
+            </div>
+                </header>
         <main id="content" class="container">
             <div id="loader-overlay" class="loader-overlay" aria-busy="false" role="status" aria-live="polite" hidden>
                 <div id="loader" class="spinner-border" role="status" aria-hidden="false">

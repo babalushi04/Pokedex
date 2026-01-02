@@ -6,7 +6,7 @@ let BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset
 let pokedexCard = [];
 let allPokemons = [];
 
-let inputValue = document.getElementById("searchInput");
+let inputValue = document.getElementById("search");
 let dialogCard = document.getElementById("dialog-content");
     
 async function init() {

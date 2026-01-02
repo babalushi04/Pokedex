@@ -1,59 +1,59 @@
-.grass {
-  background-color: rgba(124, 190, 179, 0.815) !important;
+.type-grass {
+  --type-color: rgba(124, 190, 179, 0.815);
 }
 
-.fire {
-  background-color: rgba(239, 131, 0, 0.815) !important;
+.type-fire {
+  --type-color: rgba(239, 131, 0, 0.815);
 }
 
-.water {
-  background-color: rgb(139, 172, 246) !important;
+.type-water {
+  --type-color: rgb(139, 172, 246);
 }
 
-.bug {
-  background-color: rgb(201, 201, 201) !important;
+.type-bug {
+  --type-color: rgb(201, 201, 201);
 }
 
-.normal {
-  background-color: rgb(230, 180, 98) !important;
+.type-normal {
+  --type-color: rgb(230, 180, 98);
 }
 
-.fairy {
-  background-color: rgb(255, 197, 180) !important;
+.type-fairy {
+  --type-color: rgb(255, 197, 180);
 }
 
-.poison {
-  background-color: rgb(189, 27, 238) !important;
+.type-poison {
+  --type-color: rgb(189, 27, 238);
 }
 
-.electric {
-  background-color: rgb(246, 230, 82) !important;
+.type-electric {
+  --type-color: rgb(246, 230, 82);
 }
 
-.ground {
-  background-color: rgb(197, 148, 57) !important;
+.type-ground {
+  --type-color: rgb(197, 148, 57);
 }
 
-.fighting {
-  background-color: rgb(164, 180, 180) !important;
+.type-fighting {
+  --type-color: rgb(164, 180, 180);
 }
 
-.psychic {
-  background-color: rgb(96, 212, 212) !important;
+.type-psychic {
+  --type-color: rgb(96, 212, 212);
 }
 
-.rock {
-  background-color: rgb(115, 128, 128) !important;
+.type-rock {
+  --type-color: rgb(115, 128, 128);
 }
 
-.ice {
-  background-color: rgb(151, 255, 255) !important;
+.type-ice {
+  --type-color: rgb(151, 255, 255);
 }
 
-.dragon {
-  background-color: rgb(255, 180, 151) !important;
+.type-dragon {
+  --type-color: rgb(255, 180, 151);
 }
 
-.dark{
-    background-color: rgb(49, 65, 98) !important;
+.type-dark {
+  --type-color: rgb(49, 65, 98);
 }
