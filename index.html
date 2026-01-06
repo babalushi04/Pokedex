@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
@@ -16,40 +16,44 @@
 </head>
 
 <body onload="init()">
-        <header>
-            <div class="header-logo-container">
-                <img src="./assets/pics/logo-pokemon-ball.png" href="./index.html" alt="pokemon-ball.png">
+    <header>
+        <div class="header-logo-container">
+            <a href="./index.html" class="header-logo-container" aria-label="Zur Startseite">
+                <img src="./assets/pics/logo-pokemon-ball.png" alt="Pokeball Logo">
+            </a>
+        </div>
+        <h1>Pokedex</h1>
+        <div class="search-container">
+            <input type="search" oninput="inputSearchPokemon()" placeholder="Search the Pokemon...." id="search"
+                class="search-input" name="search" aria-label="Search site content" />
+        </div>
+    </header>
+    <main id="content" class="container">
+        <div id="loader-overlay" class="loader-overlay" aria-busy="false" role="status" aria-live="polite" hidden>
+            <div id="loader" class="spinner-border" role="status" aria-hidden="false">
+                <span class="visually-hidden">Loading...</span>
             </div>
-            <h1>Pokedex</h1>
-            <div class="search-container">
-                    <input type="search" oninput="inputSearchPokemon()" placeholder="Search the Pokemon...." id="search" class="search-input" name="search" aria-label="Search site content" />
-            </div>
-                </header>
-        <main id="content" class="container">
-            <div id="loader-overlay" class="loader-overlay" aria-busy="false" role="status" aria-live="polite" hidden>
-                <div id="loader" class="spinner-border" role="status" aria-hidden="false">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
-            <div id="pokemons" class="container-xxl"></div>
-            <dialog class="dialog" closedby="any" id="dialog-content">
-                <section id="card" class="card-section"></section>
-            </dialog>
-            <div class="mor-btn-container">
-                <button class="primary-btn" onclick="morePokemon(offset)">Mehr Anzeigen</button>
-            </div>
-        </main>
+        </div>
+        <div id="pokemons" class="container-xxl"></div>
+        <dialog class="dialog" closedby="any" id="dialog-content">
+            <section id="card" class="card-section"></section>
+        </dialog>
+        <div class="mor-btn-container">
+            <button class="primary-btn" onclick="morePokemon()">Mehr Anzeigen</button>
+        </div>
+    </main>
     <footer>
         <p>© 2025 Pokedex App. All rights reserved.</p>
     </footer>
 
 
 </body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous" defer></script>
-    <script src="./scripts/db.js" defer></script>
-    <script src="./scripts/load.js" defer></script>
-    <script src="./scripts/template.js" defer></script>
-    <script src="script.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"
+    defer></script>
+<script src="./scripts/db.js" defer></script>
+<script src="./scripts/load.js" defer></script>
+<script src="./scripts/template.js" defer></script>
+<script src="script.js" defer></script>
+
 </html>

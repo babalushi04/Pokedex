@@ -20,7 +20,7 @@ header {
     align-items: center;
     height: 85px;
     background-color: var(--pokedex-red-dark);
-    padding: var(--primary-padding);
+    color: var(--text);
 }
 
 .header-logo-container {
@@ -31,19 +31,31 @@ header {
     width: 100px;
 }
 
+body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+}
+
 main {
     margin: 0 auto;
     height: auto;
     width: 100%;
-    background-color: rgba(228, 228, 228, 0.582);
+    background: transparent;
 }
 
 .container {
     min-height: calc(100vh - 170px) !important;
+    background: transparent !important;
 }
 
 body:has(.dialog[open]) {
     overflow: hidden;
+}
+
+dialog.dialog{
+  background: var(--card);
+  color: var(--text);
 }
 
 dialog.dialog[open] {
@@ -96,7 +108,12 @@ footer {
     align-items: center;
     height: 85px;
     background-color: var(--pokedex-red-dark);
-    padding: var(--primary-padding);
+    color: var(--text);
+}
+
+footer p {
+    margin: 0;
+    color: var(--text);
 }
 
 .footer-logo-container {
@@ -132,9 +149,6 @@ footer {
         margin-right: 0px;
     }
 
-    dialog.dialog {
-        max-width: min(460px, 92vw);
-        max-height: 92vh;
-    }
+
 
 }
