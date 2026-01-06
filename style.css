@@ -17,11 +17,8 @@
         justify-content: space-between;
         align-items: center;
         height: 85px;
-        background: var(--surface);
-        border-bottom: 1px solid rgba(15, 23, 42, 0.12);
+        background-color: var(--pokedex-red-dark);
         color: var(--text);
-        -webkit-backdrop-filter: blur(10px);
-        backdrop-filter: blur(10px);
     }
 
     .header-logo-container {
