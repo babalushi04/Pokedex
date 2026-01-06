@@ -1,23 +1,17 @@
 :root{
-  /* Brand */
-  --pokedex-red-dark: #8B0000;
 
-  /* Backgrounds */
-  --bg: #0b1020;        /* sehr dunkles Navy (Hintergrund überall) */
-  --surface: #121a2e;   /* Panels / Bereiche */
-  --card: #18223a;      /* Karten / Dialog */
+  --bg: #CFE9FF;         
+  --bg2: #B7DBFF;         
+  --surface: rgba(255,255,255,0.72);
+  --card: rgba(255,255,255,0.88);
 
-  /* Text */
-  --text: #e8edf6;
-  --muted: #b6c2d6;
+  --text: #0F172A;       
+  --muted: #334155;       
 
-  /* Accents */
-  --accent: #ffcc00;    /* Pokémon-Gelb für kleine Highlights */
-  --focus: #67b7ff;     /* Focus für Input */
+  --accent: #FFCC00;      
+  --accent2: #3B82F6;     
 
-  /* Layout */
   --primary-padding: 10px;
-
 }
 
 .custom-tooltip {

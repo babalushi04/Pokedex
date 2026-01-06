@@ -5,10 +5,13 @@
 .card {
   margin: 1rem;
   width: 280px;
+  background: var(--card) !important;
+  color: var(--text) !important;
 }
 
-h5 h6 {
-  color: black;
+h5,
+h6 {
+  color: var(--text);
 }
 
 .card-hover:hover {
@@ -21,7 +24,7 @@ h5 h6 {
 .card-id {
   padding: 15px;
   margin-bottom: 0;
-  color: black;
+  color: rgb(249, 248, 248);
 }
 
 .card-header {
