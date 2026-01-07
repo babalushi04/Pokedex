@@ -10,7 +10,9 @@ let inputValue = document.getElementById("search");
 let dialogCard = document.getElementById("dialog-content");
 
 async function init() {
+    showSplash();
     await pokemonCard();
+    hideSplash();
 }
 
 async function loadPokedex() {
@@ -145,10 +147,22 @@ async function showRight(i) {
 }
 
 async function morePokemon() {
-    offset += limit;
-    BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
-    await pokemonCard();
+    showSplash();
+    try {
+        offset += limit;
+        BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
+        await pokemonCard();
+    } finally {
+        hideSplash();
+    }
 }
 
+function showSplash() {
+    document.getElementById("splash")?.setAttribute("aria-busy", "true");
+}
+
+function hideSplash() {
+    document.getElementById("splash")?.setAttribute("aria-busy", "false");
+}
 
 

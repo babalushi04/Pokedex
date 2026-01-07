@@ -12,10 +12,15 @@
     <link rel="stylesheet" href="./styles/card-color.css">
     <link rel="stylesheet" href="./styles/variablen.css">
     <link rel="stylesheet" href="./styles/card.css">
+    <link rel="stylesheet" href="./styles/splash.css">
     <link href="./assets/pics/logo-pokemon-ball.png" rel="icon" type="image/png" sizes="32x32">
 </head>
 
 <body onload="init()">
+    <div id="splash" class="splash" aria-busy="true">
+        <img src="./assets/pics/logo-pokemon-ball.png" alt="Loading" class="splash-ball">
+        <p class="splash-text">Loading Pokédex…</p>
+    </div>
     <header>
         <div class="header-logo-container">
             <a href="./index.html" class="header-logo-container" aria-label="Zur Startseite">
@@ -29,11 +34,6 @@
         </div>
     </header>
     <main id="content" class="container">
-        <div id="loader-overlay" class="loader-overlay" aria-busy="false" role="status" aria-live="polite" hidden>
-            <div id="loader" class="spinner-border" role="status" aria-hidden="false">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
         <div id="pokemons" class="container-xxl"></div>
         <dialog class="dialog" closedby="any" id="dialog-content">
             <section id="card" class="card-section"></section>

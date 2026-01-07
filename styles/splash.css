@@ -1,0 +1,49 @@
+.splash {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.25);
+    z-index: 5000;
+}
+
+.splash[aria-busy="false"] {
+    display: none;
+}
+
+.splash-ball {
+    width: 96px;
+    height: 96px;
+    animation: spin 0.9s linear infinite;
+    display: block;
+    transform-origin: 50% 50%;
+    position: relative;
+}
+
+.splash-ball::after {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    transform: translateX(-50%);
+    background: var(--accent, #ffcc00);
+    border-radius: 50%;
+}
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .splash-text {
+        margin: 0;
+        font-weight: 700;
+    }
