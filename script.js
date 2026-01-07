@@ -1,10 +1,5 @@
-let limit = 20;
-let offset = 0;
 
 let BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
-
-let pokedexCard = [];
-let allPokemons = [];
 
 let inputValue = document.getElementById("search");
 let dialogCard = document.getElementById("dialog-content");
@@ -13,33 +8,6 @@ async function init() {
     showSplash();
     await pokemonCard();
     hideSplash();
-}
-
-async function loadPokedex() {
-    try {
-        const response = await fetch(BASE_URL);
-        let responseData = await response.json();
-        pokedexCard = responseData.results;
-        return pokedexCard;
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-async function pokemonData() {
-    showLoader();
-    try {
-        await loadPokedex();
-        for (let i = 0; i < pokedexCard.length; i++) {
-            let response = await fetch(pokedexCard[i].url);
-            let singledata = await response.json();
-            allPokemons.push(singledata);
-        }
-    } catch (error) {
-        console.log(error);
-    } finally {
-        hideLoader();
-    }
 }
 
 async function pokemonCard() {
