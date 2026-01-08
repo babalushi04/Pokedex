@@ -14,3 +14,7 @@
   --primary-padding: 10px;
 }
 
+.custom-tooltip{
+  --bs-tooltip-bg: var(--accent2);
+  --bs-tooltip-color: #ffffff;
+}
