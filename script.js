@@ -11,8 +11,6 @@ async function init() {
     hideSplash();
 }
 
-
-
 function renderAllPokemons() {
     const el = document.getElementById("pokemons");
     el.innerHTML = "";
