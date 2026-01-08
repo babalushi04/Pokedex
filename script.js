@@ -1,10 +1,11 @@
 
-let BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
-
-let inputValue = document.getElementById("search");
-let dialogCard = document.getElementById("dialog-content");
+let inputValue;
+let dialogCard;
 
 async function init() {
+    inputValue = document.getElementById("search");
+    dialogCard = document.getElementById("dialog-content");
+
     showSplash();
     await pokemonCard();
     hideSplash();
@@ -118,7 +119,6 @@ async function morePokemon() {
     showSplash();
     try {
         offset += limit;
-        BASE_URL = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
         await pokemonCard();
     } finally {
         hideSplash();

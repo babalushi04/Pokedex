@@ -1,18 +1,23 @@
 
 function getPokemonCard(pokemon, i, button2) {
-  return `<article onclick="cardDialog(${i})" class="card card-hover mb-3 ${pokemon.types[0].type.name}" style="width: 18rem;">
-  <div class="card-header">
-    <h5 class="card-title">${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h5>
-    <img class="cardImgHeader" src="${pokemon.sprites.front_default}" alt="${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}">
-    <span class="card-id">#${pokemon.id}</span>
-      </div>
-  <div id="button-content" class="card-footer">
-  <button type="button" id="btn-icon-button" class=" type-btn"><img class="type-img" src="./assets/pics/${pokemon.types[0].type.name}.png" alt="${pokemon.name}"></button>
-                  ${pokemon.types.length === 1 ? "":button2}
-    </article>`;
+  return `
+  <article onclick="cardDialog(${i})" class="card card-hover mb-3 ${pokemon.types[0].type.name}" style="width: 18rem;">
+    <div class="card-header">
+      <h5 class="card-title">${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h5>
+      <img class="cardImgHeader" src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
+      <span class="card-id">#${pokemon.id}</span>
+    </div>
+
+    <div id="button-content" class="card-footer">
+      <button type="button" class="type-btn">
+        <img class="type-img" src="./assets/pics/${pokemon.types[0].type.name}.png" alt="${pokemon.name}">
+      </button>
+      ${pokemon.types.length === 1 ? "" : button2}
+    </div>
+  </article>`;
 }
 
-function getNotPokemon(){
+function getNotPokemon() {
   return `<p>Kein Eintrag gefunden!</p>`
 }
 
@@ -24,10 +29,10 @@ function getPokemonCardDialog(pokemon, currentIndex) {
               <p class="card-id">#${pokemon.id}</p>
             </div>
             <nav class="link-content">
-              <a onclick="aboutCardPokemon(${currentIndex})" href="#" class="card-link">About</a>
-              <a onclick="baseStatCardPokemon(${currentIndex})" href="#" class="card-link">Base Stats</a>
-              <a onclick="shinyCardPokemon(${currentIndex})" href="#" class="card-link">Shiny</a>
-              <a onclick="evoCardPokemon(${currentIndex})" href="#" class="card-link">Evolution</a>
+              <a href="#" onclick="aboutCardPokemon(${currentIndex}); return false;" class="card-link">About</a>
+              <a href="#" onclick="baseStatCardPokemon(${currentIndex}); return false;" class="card-link">Base Stats</a>
+              <a href="#" onclick="shinyCardPokemon(${currentIndex}); return false;" class="card-link">Shiny</a>
+              <a href="#" onclick="evoCardPokemon(${currentIndex}); return false;" class="card-link">Evolution</a>
             </nav>
               <div id="card-body-content" class="card-body-content"></div>
             <div class="card-footer">
@@ -39,19 +44,19 @@ function getPokemonCardDialog(pokemon, currentIndex) {
 function getAboutCardDialog(specie, pokemon) {
   return `<div class="card-about-content ">
                 <div class="card-details-container">
-                  <p class="detail-p-headlin">Species</p><p>${pokemon.stats[5].stat.name.charAt(0).toUpperCase() + pokemon.stats[5].stat.name.slice(1)}</p>
+                 <p class="detail-p-headlin">Species</p><p>${pokemon.species.name.charAt(0).toUpperCase() + pokemon.species.name.slice(1)}</p>
                 </div>
                 <div class="card-details-container">
-                  <p class="detail-p-headlin">Height</p><p>${specie.height / 10} cm</p>
+                  <p class="detail-p-headlin">Height</p><p>${specie.height * 10} cm</p>
                 </div>
                 <div class="card-details-container">
-                  <p class="detail-p-headlin">Weight</p><p>${specie.weight / 10} kg</p>
+                 <p class="detail-p-headlin">Weight</p><p>${specie.weight / 10} kg</p>
                 </div>
                 <div class="card-details-container">
                   <p class="detail-p-headlin">Base-Exp.</p><p>${pokemon.base_experience}</p> </div>
                 <div class="card-details-container">
                   <p class="detail-p-headlin">Abilities</p>
-                  <p>${specie.abilities[0].ability.name.charAt(0).toUpperCase() +specie.abilities[0].ability.name.slice(1)}${specie.abilities[1] !== undefined ? ", " + specie.abilities[1].ability.name.charAt(0).toUpperCase() +specie.abilities[1].ability.name.slice(1) : ""}</p>
+                  <p>${specie.abilities[0].ability.name.charAt(0).toUpperCase() + specie.abilities[0].ability.name.slice(1)}${specie.abilities[1] !== undefined ? ", " + specie.abilities[1].ability.name.charAt(0).toUpperCase() + specie.abilities[1].ability.name.slice(1) : ""}</p>
                 </div>
           </div>`;
 }
@@ -89,7 +94,7 @@ function getBaseStatCardDialog(pokemon) {
 </div>`;
 }
 
-function getShinyCardDialog(pokemon,pokemon2) {
+function getShinyCardDialog(pokemon, pokemon2) {
   return `<div class="card-shiny-content">
   <img class="cardImgHeader" src="${pokemon.sprites.front_shiny}" alt="${pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}" style="width:140px; height:140px">
   <span>${pokemon.past_abilities && pokemon.past_abilities[0] ? pokemon.past_abilities[0].generation.name.charAt(0).toUpperCase() + pokemon.past_abilities[0].generation.name.slice(1) : ""}</span>
@@ -99,6 +104,6 @@ function getShinyCardDialog(pokemon,pokemon2) {
 
 function getEvoCardDialog(pokemon4) {
   return `<div class="card-evo-content">
-  <span>${pokemon4.chain && pokemon4.chain.species && pokemon4.chain.species.name ? pokemon4.chain.species.name.charAt(0).toUpperCase() +pokemon4.chain.species.name.slice(1) : ""} ${pokemon4.chain && pokemon4.chain.evolves_to && pokemon4.chain.evolves_to[0] ? ">" : ""}</span><span>${pokemon4.chain && pokemon4.chain.evolves_to && pokemon4.chain.evolves_to[0] && pokemon4.chain.evolves_to[0].species && pokemon4.chain.evolves_to[0].species.name ? pokemon4.chain.evolves_to[0].species.name.charAt(0).toUpperCase() + pokemon4.chain.evolves_to[0].species.name.slice(1) : ""} ${pokemon4.chain && pokemon4.chain.evolves_to && pokemon4.chain.evolves_to[0] && pokemon4.chain.evolves_to[0].evolves_to && pokemon4.chain.evolves_to[0].evolves_to[0] ? ">" : ""}</span> <span>${pokemon4.chain && pokemon4.chain.evolves_to && pokemon4.chain.evolves_to[0] && pokemon4.chain.evolves_to[0].evolves_to && pokemon4.chain.evolves_to[0].evolves_to[0] && pokemon4.chain.evolves_to[0].evolves_to[0].species && pokemon4.chain.evolves_to[0].evolves_to[0].species.name ? pokemon4.chain.evolves_to[0].evolves_to[0].species.name.charAt(0).toUpperCase() + pokemon4.chain.evolves_to[0].evolves_to[0].species.name.slice(1) : ""}</span>
+  <span>${pokemon4.chain && pokemon4.chain.species && pokemon4.chain.species.name ? pokemon4.chain.species.name.charAt(0).toUpperCase() + pokemon4.chain.species.name.slice(1) : ""} ${pokemon4.chain && pokemon4.chain.evolves_to && pokemon4.chain.evolves_to[0] ? ">" : ""}</span><span>${pokemon4.chain && pokemon4.chain.evolves_to && pokemon4.chain.evolves_to[0] && pokemon4.chain.evolves_to[0].species && pokemon4.chain.evolves_to[0].species.name ? pokemon4.chain.evolves_to[0].species.name.charAt(0).toUpperCase() + pokemon4.chain.evolves_to[0].species.name.slice(1) : ""} ${pokemon4.chain && pokemon4.chain.evolves_to && pokemon4.chain.evolves_to[0] && pokemon4.chain.evolves_to[0].evolves_to && pokemon4.chain.evolves_to[0].evolves_to[0] ? ">" : ""}</span> <span>${pokemon4.chain && pokemon4.chain.evolves_to && pokemon4.chain.evolves_to[0] && pokemon4.chain.evolves_to[0].evolves_to && pokemon4.chain.evolves_to[0].evolves_to[0] && pokemon4.chain.evolves_to[0].evolves_to[0].species && pokemon4.chain.evolves_to[0].evolves_to[0].species.name ? pokemon4.chain.evolves_to[0].evolves_to[0].species.name.charAt(0).toUpperCase() + pokemon4.chain.evolves_to[0].evolves_to[0].species.name.slice(1) : ""}</span>
   </div>`;
 }
