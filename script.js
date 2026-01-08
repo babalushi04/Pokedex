@@ -12,16 +12,16 @@ async function init() {
 }
 
 function renderAllPokemons() {
-    const el = document.getElementById("pokemons");
-    el.innerHTML = "";
+    let pokemonContainer = document.getElementById("pokemons");
+    pokemonContainer.innerHTML = "";
 
-    for (let i = 0; i < allPokemons.length; i++) {
-        const p = allPokemons[i];
-        const type2 = p.types[1]?.type?.name ?? "";
-        const btn = `<button id="btn-icon-button" class="type-btn">
-      <img id="cardImgHeder" class="type-img" src="./assets/pics/${type2}.png" alt="${p.name}">
-    </button>`;
-        el.innerHTML += getPokemonCard(p, i, btn);
+    for (let index = 0; index < allPokemons.length; index++) {
+        let pokemon = allPokemons[index];
+        let secondType = pokemon.types[1]?.type?.name ?? "";
+        let typeButton = secondType ? `<button id="btn-icon-button" class="type-btn">
+      <img id="cardImgHeder" class="type-img" src="./assets/pics/${secondType}.png" alt="${pokemon.name}">
+    </button>` : "";
+        pokemonContainer.innerHTML += getPokemonCard(pokemon, index, typeButton);
     }
 }
 
@@ -73,19 +73,24 @@ async function evoCardPokemon(i) {
 }
 
 function inputSearchPokemon() {
-    const search = inputValue.value.trim().toLowerCase();
-    const pokemonContainer = document.getElementById("pokemons");
+    let search = inputValue.value.trim().toLowerCase();
+    let pokemonContainer = document.getElementById("pokemons");
 
     if (search === "") {
         renderAllPokemons();
         return;
     }
 
-    const foundPokemons = allPokemons.filter(pokemon => {
-        const nameMatches = pokemon.name.toLowerCase().includes(search);
-        const idMatches = String(pokemon.id).includes(search);
-        return nameMatches || idMatches;
-    });
+    let foundPokemons = [];
+    for (let i = 0; i < allPokemons.length; i++) {
+        let pokemon = allPokemons[i];
+        let pokemonName = pokemon.name.toLowerCase();
+        let pokemonId = String(pokemon.id);
+        
+        if (pokemonName.includes(search) || pokemonId.includes(search)) {
+            foundPokemons.push(pokemon);
+        }
+    }
 
     if (foundPokemons.length === 0) {
         pokemonContainer.innerHTML = getNotPokemon();
@@ -93,14 +98,15 @@ function inputSearchPokemon() {
     }
 
     pokemonContainer.innerHTML = "";
-    foundPokemons.forEach(pokemon => {
-        const index = allPokemons.indexOf(pokemon);
-        const secondType = pokemon.types[1]?.type?.name ?? "";
-        const typeButton = `<button id="btn-icon-button" class="type-btn">
+    for (let i = 0; i < foundPokemons.length; i++) {
+        let pokemon = foundPokemons[i];
+        let index = allPokemons.indexOf(pokemon);
+        let secondType = pokemon.types[1]?.type?.name ?? "";
+        let typeButton = secondType ? `<button id="btn-icon-button" class="type-btn">
       <img id="cardImgHeder" class="type-img" src="./assets/pics/${secondType}.png" alt="${pokemon.name}">
-    </button>`;
+    </button>` : "";
         pokemonContainer.innerHTML += getPokemonCard(pokemon, index, typeButton);
-    });
+    }
 }
 
 async function showLeft(i) {
@@ -119,12 +125,9 @@ async function showRight(i) {
 
 async function morePokemon() {
     showSplash();
-    try {
-        offset += limit;
-        await pokemonCard();
-    } finally {
-        hideSplash();
-    }
+    offset += limit;
+    await pokemonCard();
+    hideSplash();
 }
 
 function showSplash() {
