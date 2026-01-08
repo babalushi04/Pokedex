@@ -1,20 +1,16 @@
-:root{
+:root {
 
-  --bg: #CFE9FF;         
-  --bg2: #B7DBFF;         
-  --surface: rgba(255,255,255,0.72);
-  --card: rgba(255,255,255,0.88);
+  --bg: #CFE9FF;
+  --bg2: #B7DBFF;
+  --surface: rgba(255, 255, 255, 0.72);
+  --card: rgba(255, 255, 255, 0.88);
 
-  --text: #0F172A;       
-  --muted: #334155;       
+  --text: #0F172A;
+  --muted: #334155;
 
-  --accent: #FFCC00;      
-  --accent2: #3B82F6;     
-
+  --accent: #FFCC00;
+  --accent2: #3B82F6;
+  --focus: var(--accent2);
   --primary-padding: 10px;
 }
 
-.custom-tooltip {
-  --bs-tooltip-bg: var(--bd-violet-bg);
-  --bs-tooltip-color: var(--bs-white);
-}
