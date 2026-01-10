@@ -57,3 +57,76 @@
 .type-dark {
   --type-color: rgb(49, 65, 98);
 }
+
+
+.type-btn.fire {
+  background-color: #ff4422;
+}
+
+.type-btn.water {
+  background-color: #3399ff;
+}
+
+.type-btn.grass {
+  background-color: #77cc55;
+}
+
+.type-btn.electric {
+  background-color: #ffcc33;
+}
+
+.type-btn.psychic {
+  background-color: #ff5599;
+}
+
+.type-btn.rock {
+  background-color: #bbaa66;
+}
+
+.type-btn.fighting {
+  background-color: #bb5544;
+}
+
+.type-btn.ghost {
+  background-color: #6666bb;
+}
+
+.type-btn.steel {
+  background-color: #aaaabb;
+}
+
+.type-btn.flying {
+  background-color: #8899ff;
+}
+
+.type-btn.dark {
+  background-color: #775544;
+}
+
+.type-btn.fairy {
+  background-color: #ee99ee;
+}
+
+.type-btn.normal {
+  background-color: #aaaa99;
+}
+
+.type-btn.bug {
+  background-color: #aabb22;
+}
+
+.type-btn.poison {
+  background-color: #aa5599;
+}
+
+.type-btn.ground {
+  background-color: #ddbb55;
+}
+
+.type-btn.ice {
+  background-color: #66ccff;
+}
+
+.type-btn.dragon {
+  background-color: #7766ee;
+}

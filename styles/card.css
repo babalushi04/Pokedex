@@ -96,7 +96,7 @@ h6 {
   cursor: pointer;
 }
 
-.type-img{
+.type-img {
   width: 26px;
   height: 26px;
   filter: brightness(0) invert(1);
@@ -170,6 +170,7 @@ ul {
   font-size: large;
   padding: 0;
 }
+
 
 @media (max-width: 460px) {
   .card {
