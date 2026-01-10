@@ -20,28 +20,34 @@
     <div id="splash" class="splash" aria-busy="true">
     </div>
     <header>
-        <div class="header-logo-container">
-            <a href="./index.html" class="header-logo-container" aria-label="Zur Startseite">
-                <img src="./assets/pics/logo-pokemon-ball.png" alt="Pokeball Logo">
-            </a>
-        </div>
-        <h1>Pokedex</h1>
-        <div class="search-container">
-            <input type="search" oninput="inputSearchPokemon()" placeholder="Search the Pokemon...." id="search"
-                class="search-input" name="search" aria-label="Search site content" />
+        <div class="page-width header-inner">
+            <div class="header-logo-container">
+                <a href="./index.html" class="header-logo-container" aria-label="Zur Startseite">
+                    <img src="./assets/pics/logo-pokemon-ball.png" alt="Pokeball Logo">
+                </a>
+            </div>
+            <h1>Pokedex</h1>
+            <div class="search-container">
+                <input type="search" oninput="inputSearchPokemon()" placeholder="Search the Pokemon...." id="search"
+                    class="search-input" name="search" aria-label="Search site content" />
+            </div>
         </div>
     </header>
-    <main id="content" class="container">
-        <div id="pokemons" class="container-xxl"></div>
-        <dialog class="dialog" closedby="any" id="dialog-content">
-            <section id="card" class="card-section"></section>
-        </dialog>
-        <div class="mor-btn-container">
-            <button class="primary-btn" onclick="morePokemon()">Mehr Anzeigen</button>
+    <main id="content">
+        <div class="page-width">
+            <div id="pokemons" class="container-xxl"></div>
+            <dialog class="dialog" closedby="any" id="dialog-content">
+                <section id="card" class="card-section"></section>
+            </dialog>
+            <div class="mor-btn-container">
+                <button class="primary-btn" onclick="morePokemon()">Mehr Anzeigen</button>
+            </div>
         </div>
     </main>
     <footer>
-        <p>© 2025 Pokedex App. All rights reserved.</p>
+        <div class="page-width footer-inner">
+            <p>© 2025 Pokedex App. All rights reserved.</p>
+        </div>
     </footer>
 
 

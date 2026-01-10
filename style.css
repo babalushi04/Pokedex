@@ -38,6 +38,34 @@
             linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
     }
 
+    .page-width {
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+    .header-logo-container {
+        flex: 0 0 auto;
+    }
+
+    .header-inner h1 {
+        flex: 1;
+        text-align: center;
+        margin: 0;
+    }
+
+    /* Rechts */
+    .search-container {
+        flex: 0 0 auto;
+        display: flex;
+        justify-content: flex-end;
+    }
+
     main {
         margin: 0 auto;
         height: auto;
@@ -131,6 +159,13 @@
         width: 90px;
     }
 
+    .footer-inner {
+        height: 85px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     @media (max-width: 460px) {
         header {
             display: flex;
@@ -154,5 +189,7 @@
         .search-input {
             margin-right: 0px;
         }
+        
 
     }
+    
