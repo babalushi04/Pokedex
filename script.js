@@ -17,10 +17,10 @@ function renderAllPokemons() {
 
     for (let index = 0; index < allPokemons.length; index++) {
         let pokemon = allPokemons[index];
-        let secondType = pokemon.types[1]?.type?.name ?? "";
-        let typeButton = secondType ? `<button id="btn-icon-button" class="type-btn">
-      <img id="cardImgHeder" class="type-img" src="./assets/pics/${secondType}.png" alt="${pokemon.name}">
-    </button>` : "";
+
+        let secondType = pokemon.types[1]?.type?.name;
+        let typeButton = getTypeButton(secondType, pokemon.name);
+
         pokemonContainer.innerHTML += getPokemonCard(pokemon, index, typeButton);
     }
 }
@@ -73,7 +73,7 @@ async function evoCardPokemon(i) {
 }
 
 function inputSearchPokemon() {
-    let search = inputValue.value.trim().toLowerCase();
+    let search = getSearchValue();
     let pokemonContainer = document.getElementById("pokemons");
 
     if (search === "") {
@@ -81,33 +81,59 @@ function inputSearchPokemon() {
         return;
     }
 
-    let foundPokemons = [];
-    for (let i = 0; i < allPokemons.length; i++) {
-        let pokemon = allPokemons[i];
-        let pokemonName = pokemon.name.toLowerCase();
-        let pokemonId = String(pokemon.id);
-        
-        if (pokemonName.includes(search) || pokemonId.includes(search)) {
-            foundPokemons.push(pokemon);
-        }
-    }
+    let foundPokemons = filterPokemons(search);
 
     if (foundPokemons.length === 0) {
         pokemonContainer.innerHTML = getNotPokemon();
         return;
     }
 
+    renderFoundPokemons(foundPokemons, pokemonContainer);
+}
+
+function getSearchValue() {
+    return inputValue.value.trim().toLowerCase();
+}
+
+function filterPokemons(search) {
+    let foundPokemons = [];
+    for (let i = 0; i < allPokemons.length; i++) {
+        let pokemon = allPokemons[i];
+        if (matchesSearch(pokemon, search)) {
+            foundPokemons.push(pokemon);
+        }
+    }
+    return foundPokemons;
+}
+
+function matchesSearch(pokemon, search) {
+    let pokemonName = pokemon.name.toLowerCase();
+    let pokemonId = String(pokemon.id);
+    return pokemonName.includes(search) || pokemonId.includes(search);
+}
+
+function renderFoundPokemons(foundPokemons, pokemonContainer) {
     pokemonContainer.innerHTML = "";
+
     for (let i = 0; i < foundPokemons.length; i++) {
         let pokemon = foundPokemons[i];
         let index = allPokemons.indexOf(pokemon);
-        let secondType = pokemon.types[1]?.type?.name ?? "";
-        let typeButton = secondType ? `<button id="btn-icon-button" class="type-btn">
-      <img id="cardImgHeder" class="type-img" src="./assets/pics/${secondType}.png" alt="${pokemon.name}">
-    </button>` : "";
+
+        let secondType = pokemon.types[1]?.type?.name;
+        let typeButton = getTypeButton(secondType, pokemon.name);
+
         pokemonContainer.innerHTML += getPokemonCard(pokemon, index, typeButton);
     }
 }
+
+function getTypeButton(typeName, pokemonName) {
+  if (!typeName) return "";
+
+  return `<button class="type-btn ${typeName}" title="${typeName}">
+    <img class="type-img" src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/${typeName}.svg" alt="${pokemonName} ${typeName}">
+  </button>`;
+}
+
 
 async function showLeft(i) {
     let currentIndex = (i - 1 + allPokemons.length) % allPokemons.length;
@@ -137,5 +163,3 @@ function showSplash() {
 function hideSplash() {
     document.getElementById("splash")?.setAttribute("aria-busy", "false");
 }
-
-

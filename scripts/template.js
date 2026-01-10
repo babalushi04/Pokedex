@@ -8,9 +8,11 @@ function getPokemonCard(pokemon, i, button2) {
       <span class="card-id">#${pokemon.id}</span>
     </div>
 
-    <div id="button-content" class="card-footer">
-      <button type="button" class="type-btn">
-        <img class="type-img" src="./assets/pics/${pokemon.types[0].type.name}.png" alt="${pokemon.name}">
+    <div class="card-footer">
+      <button type="button" class="type-btn ${pokemon.types[0].type.name}">
+        <img class="type-img"
+          src="https://raw.githubusercontent.com/duiker101/pokemon-type-svg-icons/master/icons/${pokemon.types[0].type.name}.svg"
+          alt="${pokemon.types[0].type.name}">
       </button>
       ${pokemon.types.length === 1 ? "" : button2}
     </div>
@@ -107,3 +109,4 @@ function getEvoCardDialog(pokemon4) {
   <span>${pokemon4.chain && pokemon4.chain.species && pokemon4.chain.species.name ? pokemon4.chain.species.name.charAt(0).toUpperCase() + pokemon4.chain.species.name.slice(1) : ""} ${pokemon4.chain && pokemon4.chain.evolves_to && pokemon4.chain.evolves_to[0] ? ">" : ""}</span><span>${pokemon4.chain && pokemon4.chain.evolves_to && pokemon4.chain.evolves_to[0] && pokemon4.chain.evolves_to[0].species && pokemon4.chain.evolves_to[0].species.name ? pokemon4.chain.evolves_to[0].species.name.charAt(0).toUpperCase() + pokemon4.chain.evolves_to[0].species.name.slice(1) : ""} ${pokemon4.chain && pokemon4.chain.evolves_to && pokemon4.chain.evolves_to[0] && pokemon4.chain.evolves_to[0].evolves_to && pokemon4.chain.evolves_to[0].evolves_to[0] ? ">" : ""}</span> <span>${pokemon4.chain && pokemon4.chain.evolves_to && pokemon4.chain.evolves_to[0] && pokemon4.chain.evolves_to[0].evolves_to && pokemon4.chain.evolves_to[0].evolves_to[0] && pokemon4.chain.evolves_to[0].evolves_to[0].species && pokemon4.chain.evolves_to[0].evolves_to[0].species.name ? pokemon4.chain.evolves_to[0].evolves_to[0].species.name.charAt(0).toUpperCase() + pokemon4.chain.evolves_to[0].evolves_to[0].species.name.slice(1) : ""}</span>
   </div>`;
 }
+
